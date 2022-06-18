@@ -14,10 +14,11 @@ struct employee
 
 typedef struct employee Employee;
 
-char server[] = "localhost";
-char user[] = "root"; 
-char pass[] = "carlos2012";
-char db[] = "company";
+//mysql config
+char server[] = ""; //fill me up
+char user[] = ""; //fill me up
+char pass[] = ""; //fill me up
+char db[] = ""; //fill me up
 //global object
 sql_db obj_mysql(server, user, pass, db);
 
@@ -27,6 +28,7 @@ void modify(), update(Employee info, int id), del();
 void sort(), show(), pause();
 char menu(void);
 
+//main function
 int main(int argc, char *argv[])
 {
     char op;
@@ -72,6 +74,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+//get info for insert
 void get_into() 
 {
     Employee info;
@@ -86,6 +89,7 @@ void get_into()
     cout << "Employee successfully entered";
 }
 
+//create a new employee in table
 void insert(Employee info)
 {
     char *consult;
@@ -97,6 +101,7 @@ void insert(Employee info)
     obj_mysql.run_sql(consult);
 }
 
+//search a specific employee in table
 void search()
 {
     char name[50];
@@ -123,6 +128,7 @@ void search()
     }
 }
 
+//search employee to modify and get the new info
 void modify()
 {
     char name[50];
@@ -158,6 +164,7 @@ void modify()
     }
 }
 
+//update the select employee
 void update(Employee info, int id)
 {
     char name[50];
@@ -169,6 +176,7 @@ void update(Employee info, int id)
     obj_mysql.run_sql(consult);
 }
 
+//delete the select employee
 void del()
 {
     char name[50];
@@ -201,6 +209,7 @@ void del()
     }
 }
 
+//ignore this function, is not implemented
 void sort()
 {
     MYSQL_RES *res;
@@ -229,6 +238,7 @@ void sort()
     cout << "Records have been sorted by: name" << endl;
 }
 
+//show all the employees in the table
 void show()
 {
     MYSQL_RES *res;
@@ -256,6 +266,7 @@ void show()
     }
 }
 
+//show the menu and get the new instrucction to execute
 char menu(void)
 {
     char c;
